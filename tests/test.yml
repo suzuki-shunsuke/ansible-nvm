@@ -1,0 +1,15 @@
+---
+- hosts: default
+  pre_tasks:
+  - name: Install git
+    yum:
+      name: git
+      update_cache: yes
+    become: yes
+  roles:
+  - role: ansible-nvm
+  - role: ansible-nvm
+    nvm_rc_path: "{{ ansible_env.HOME }}/.bashrc"
+  - role: ansible-nvm
+    nvm_dir: "{{ ansible_env.HOME }}/.ghq/github.com/creationx/nvim"
+    nvm_rc_path: "{{ ansible_env.HOME }}/.bashrc"

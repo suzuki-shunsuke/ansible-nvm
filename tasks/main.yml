@@ -1,0 +1,30 @@
+---
+# tasks file for nvm
+# https://github.com/creationix/nvm#git-install
+# cd ~
+# git clone https://github.com/creationix/nvm.git .nvm
+# ~/.bashrc, ~/.profile, or ~/.zshrc
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+#
+- name: Create directories
+  file:
+    dest: "{{ nvm_dir | dirname }}"
+    state: directory
+- name: Clone nvm
+  git:
+    repo: https://github.com/creationix/nvm
+    dest: "{{ nvm_dir }}"
+- block:
+  - name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc
+    lineinfile:
+      dest: "{{ nvm_rc_path }}"
+      line: export NVM_DIR="{{ nvm_dir }}"
+      regexp: '^export NVM_DIR='
+      create: yes
+  - name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc
+    lineinfile:
+      dest: "{{ nvm_rc_path }}"
+      line: '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
+      create: yes
+  when: nvm_rc_path != "NOT ADD"
