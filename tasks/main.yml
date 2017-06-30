@@ -19,7 +19,7 @@
   - name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc
     lineinfile:
       dest: "{{ nvm_rc_path }}"
-      line: export NVM_DIR="{{ nvm_dir }}"
+      line: 'export NVM_DIR="{{ nvm_dir }}"'
       regexp: '^export NVM_DIR='
       create: yes
   - name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc

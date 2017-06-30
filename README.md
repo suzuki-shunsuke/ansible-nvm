@@ -1,5 +1,7 @@
 # ansible-nvm
 
+[![Build Status](https://travis-ci.org/suzuki-shunsuke/ansible-nvm.svg?branch=master)](https://travis-ci.org/suzuki-shunsuke/ansible-nvm)
+
 ansible role to install nvm
 
 https://galaxy.ansible.com/suzuki-shunsuke/nvm/
@@ -12,8 +14,10 @@ Requirements
 Role Variables
 --------------
 
-* nvm_dir: By default, if the environment variable NVM_DIR is set this value is set, and otherwise $HOME/.nvm is set
-* nvm_rc_path: By default, lines aren't added
+name | required | default | description
+--- | --- | --- | ---
+nvm_dir | no | $NVM_DIR >> $HOME/.nvm |
+nvm_rc_path | no | "NOT ADD" | By default configuration is not added
 
 Dependencies
 ------------
