@@ -38,4 +38,4 @@ Example Playbook
 License
 -------
 
-MIT
+[MIT](LICENSE)
