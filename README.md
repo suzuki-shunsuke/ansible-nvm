@@ -29,14 +29,12 @@ Nothing.
   - role: suzuki-shunsuke.nvm
     nvm_dir: "{{ ansible_env.HOME }}/.ghq/github.com/creationx/nvm"
     nvm_rc_path: "{{ ansible_env.HOME }}/.bashrc"
-  # install the other user
+  # install as the other user
   - role: suzuki-shunsuke.nvm
-    nvm_dir: /home/{{item}}/.nvm
-    nvm_rc_path: /home/{{item}}/.bashrc"
+    nvm_dir: /home/foo/.nvm
+    nvm_rc_path: /home/foo/.bashrc"
     become: yes
-    become_user: "{{item}}"
-    items:
-    - foo
+    become_user: foo
 ```
 
 ## License
