@@ -8,7 +8,8 @@
       name: nvm
     become: "{{nonroot}}"
   roles:
-  - git
+  - role: geerlingguy.git
+    become: "{{ (ansible_env.USER is undefined) | ternary(ansible_env.HOME != '/root', ansible_env.USER != 'root') }}"
   - role: ansible-nvm
     nvm_dir: "{{ ansible_env.HOME }}/nvm"
   - role: ansible-nvm
