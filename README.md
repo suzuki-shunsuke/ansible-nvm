@@ -6,26 +6,22 @@ ansible role to install nvm
 
 https://galaxy.ansible.com/suzuki-shunsuke/nvm/
 
-Requirements
-------------
+## Requirements
 
 * git
 
-Role Variables
---------------
+## Role Variables
 
 name | required | default | description
 --- | --- | --- | ---
 nvm_dir | no | $NVM_DIR >> $HOME/.nvm |
 nvm_rc_path | no | "NOT ADD" | By default configuration is not added
 
-Dependencies
-------------
+## Dependencies
 
 Nothing.
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```yaml
 - hosts: servers
@@ -33,9 +29,16 @@ Example Playbook
   - role: suzuki-shunsuke.nvm
     nvm_dir: "{{ ansible_env.HOME }}/.ghq/github.com/creationx/nvm"
     nvm_rc_path: "{{ ansible_env.HOME }}/.bashrc"
+  # install the other user
+  - role: suzuki-shunsuke.nvm
+    nvm_dir: /home/{{item}}/.nvm
+    nvm_rc_path: /home/{{item}}/.bashrc"
+    become: yes
+    become_user: "{{item}}"
+    items:
+    - foo
 ```
 
-License
--------
+## License
 
 [MIT](LICENSE)
