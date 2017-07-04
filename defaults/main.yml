@@ -2,3 +2,6 @@
 # defaults file for nvm
 nvm_dir: "{{ ansible_env.get('NVM_DIR', '{}/.nvm'.format(ansible_env.HOME))}}"
 nvm_rc_path: "NOT ADD"
+nvm_repo: https://github.com/creationix/nvm
+nvm_version: HEAD
+nvm_update: yes
