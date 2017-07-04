@@ -8,8 +8,10 @@
     state: directory
 - name: Clone nvm
   git:
-    repo: https://github.com/creationix/nvm
+    repo: "{{ nvm_repo }}"
     dest: "{{ nvm_dir }}"
+    version: "{{ nvm_version }}"
+    update: "{{ nvm_update }}"
 - block:
   - name: Add configurations to ~/.bashrc, ~/.profile, or ~/.zshrc or etc
     lineinfile:
